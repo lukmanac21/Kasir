@@ -31,10 +31,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <tr>
             <th>No</th>
             <th>Nama Barang</th>
-            <th>Jumlah Barang</th>
+            <th>Stok Barang</th>
             <th>Harga Barang</th>
             <th>Edit</th>
-            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -46,13 +45,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr>
              <td><?php echo $numstart; ?></td>
              <td><?php echo $tmpl->nama_barang; ?></td>
-             <td><?php echo $tmpl->jumlah_barang; ?></td>
+             <td><?php echo $tmpl->stok_barang; ?></td>
              <td><?php echo $tmpl->harga_barang; ?></td>
              <td><a class="btn btn-info a-btn-slide-text" data-toggle="modal" data-target="#edit<?php echo $tmpl->id_barang; ?>"><i class="fas fa-fw fa-edit"></i>        
             </a></td>
-            <td><a href="#" class="btn btn-danger a-btn-slide-text" data-toggle="modal" data-target="#delete<?php echo $tmpl->id_barang; ?>">
-              <i class="fas fa-fw fa-trash"></i>
-            </a></td>
+            
           </tr>
           <?php $i++;
           $numstart++; } ?>
@@ -101,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="text" name="nama_barang" class="form-control" id="nama_barang" value="<?php echo $tmpl->nama_barang; ?>">
       </div>
       <div class="form-group">
-        <input type="number" name="jumlah_barang" class="form-control" id="jumlah_barang" value="<?php echo $tmpl->jumlah_barang; ?>" readonly>
+        <input type="number" name="jumlah_barang" class="form-control" id="jumlah_barang" value="<?php echo $tmpl->stok_barang; ?>" readonly>
       </div>           
       <div class="form-group">
         <input type="number" name="harga_barang" class="form-control" id="harga_barang"  value="<?php echo $tmpl->harga_barang; ?>">
@@ -115,28 +112,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <?php echo form_close(); ?>
 </div>
 </div>
-</div>
-<div class="modal fade" id="delete<?php echo $tmpl->id_barang; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Anda Yakin ?
-      </div>
-      <div class="modal-footer">
-        <?php echo form_open('Barang/deleteItem') ?>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="hidden" name="id_barang" value="<?php echo $tmpl->id_barang; ?>">
-        <button type="submit" class="btn btn-primary">Delete</button>
-        <?php echo form_close(); ?>
-      </div>
-    </div>
-  </div>
 </div>
 <?php } ?>
 </div>

@@ -61,6 +61,7 @@ public function index()
 
       	$data['title'] = "Table Of Item"; //title web
           $data['tampil'] = $this->mPembelian->tampil($config["per_page"], $data['page']);
+          $data['tampildetail'] = $this->mPembelian->tampildetail($config["per_page"], $data['page']);
           $data['groups'] = $this->mPembelian->get_name_item();
           $this->load->view('vPembelian',$data);
       }
@@ -73,30 +74,33 @@ public function index()
         $data['id_barang'] = $this->input->post('id_barang');
         $data['total_barang'] = $this->input->post('total_barang');
         $data['harga_barang'] = $this->input->post('harga_barang');
-        $data['keterangan'] = $this->input->post('keterangan_barang');
         $data['sub_total'] = $data['harga_barang'] * $data['total_barang'];
 
-        $this->mPembelian->save_itemTemp($data, 'tbl_temp');
+        $this->mPembelian->save_itemTemp($data, 'tbl_temppembelian');
         redirect('Pembelian/newPembelian');
     }
     public function addPembelian(){
+        
         $data['tanggal'] = date('y-m-d');
         $data['total_pembelian'] = $this->input->post('total');
-        $data_detail = array();
         $temp = $this->mPembelian->tempdata();
+        $lastid = $this->mPembelian->save_pembelian($data,'tbl_pembelian');
+       
         foreach($temp as $tmp){
             $data_insert[] = array(
-            'nama_barang' => $tmp->nama_barang,
-            'jumlah_barang' => $tmp->jumlah_barang,
+            'id_pembelian' => $lastid,
+            'id_barang' => $tmp->id_barang,
+            'jumlah_barang' => $tmp->total_barang,
             'harga_barang' => $tmp->harga_barang,
-            'keterangan' => $tmp->keterangan,
+            'sub_total' => $tmp->sub_total,
             );
-            $data_detail[] = $data_insert;
-        }       
-        $this->mPembelian->save_pembelian($data,'tbl_pembelian');
-        $this->mPembelian->save_detail($data_detail,'tbl_detailpembelian');
+        }     
+        $this->mPembelian->save_detail($data_insert,'tbl_detailpembelian');
         redirect('Pembelian');
-
+    }
+    public function deleteAll(){
+        $this->mPembelian->delete_allitem('tbl_temppembelian');
+        redirect('Pembelian/newPembelian');
     }
 }
 

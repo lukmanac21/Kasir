@@ -22,13 +22,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div id="content-wrapper">
 
     <div class="container-fluid">
-      <h1>Data <strong>Item Pembelian</strong></h1>
-      <?php echo form_open_multipart('Pembelian/deleteAll'); ?>
+      <h1>Data <strong>Item Penjualan</strong></h1>
+      <?php echo form_open_multipart('Penjualan/deleteAll'); ?>
       <button type="submit" class="btn btn-danger mb-2">Clear Data</button>
       <?php echo form_close(); ?>
       <br>
       <br>
-      <?php echo form_open_multipart('Pembelian/addTemp'); ?>
+      <?php echo form_open_multipart('Penjualan/addTemp'); ?>
         <div class="form-group">
         <div class="row">
             <div class="col">
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <button type="submit" class="btn btn-primary mb-2">Confirm Data</button>
         <?php echo form_close(); ?>
 
-    <?php echo form_open_multipart('Pembelian/addPembelian'); ?>         
+    <?php echo form_open_multipart('Penjualan/addPenjualan'); ?>         
       <table id="table" class="table table-striped table-bordered table-active" cellspacing="0" width="100%">
         <thead class="thead-dark">
           <tr>
@@ -101,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </tr>
         </tfoot>
       </table>
-      <button type="submit" class="btn btn-primary mb-2" >Proses Pembelian</button>
+      <button type="submit" class="btn btn-primary mb-2" >Proses Penjualan</button>
       <?php echo form_close(); ?>
 </div>
 <?php $this->load->view("_partials/footer.php") ?>

@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <div id="content-wrapper">
 
     <div class="container-fluid">
-      <h1>Data <strong>Pembelian</strong></h1>
+      <h1>Data <strong>Penjualan</strong></h1>
       <br>
       <br>
 
@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <tr>
             <th>No</th>
             <th>Tanggal</th>
-            <th>Total Pembelian</th>
+            <th>Total Penjualan</th>
             <th>Detail</th>
           </tr>
         </thead>
@@ -43,8 +43,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr>
              <td><?php echo $numstart; ?></td>
              <td><?php echo $tmpl->tanggal; ?></td>
-             <td><?php echo $tmpl->total_pembelian; ?></td>
-             <td><a class="btn btn-info a-btn-slide-text" data-toggle="modal" data-target="#detail<?php echo $tmpl->id_pembelian; ?>"><i class="fas fa-fw fa-edit"></i>        
+             <td><?php echo $tmpl->total_penjualan; ?></td>
+             <td><a class="btn btn-info a-btn-slide-text" data-toggle="modal" data-target="#detail<?php echo $tmpl->id_penjualan; ?>"><i class="fas fa-fw fa-edit"></i>        
             </a></td>
           </tr>
           <?php $i++;
@@ -52,11 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </tbody>
       </table>
       <?php foreach($tampil as $tmpl) {;?>
- <div class="modal fade" id="detail<?php echo $tmpl->id_pembelian;?>">
+ <div class="modal fade" id="detail<?php echo $tmpl->id_penjualan;?>">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
      <div class="modal-header">
-      <h4 class="modal-title">Detail Pembelian</h4>
+      <h4 class="modal-title">Detail Penjualan</h4>
       <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
